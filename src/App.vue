@@ -1,22 +1,19 @@
 <script setup>
 import axios from "axios";
+import { useStore } from "./store/index.js";
+
+const store = useStore();
 </script>
 
 <template>
-  <h1 class="text-3xl font-bold underline">Hello world!</h1>
+  <router-view v-slot="{ Component }">
+    <keep-alive> <component :is="Component" /> </keep-alive>
+  </router-view>
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+<style>
+#app {
+  padding: 0;
+  height: 100vh;
 }
 </style>

@@ -9,6 +9,6 @@ export default {
     const pokemonList = await pokedex.getList(this.getPokemonListOffset);
 
     this.pokemonList.push(...pokemonList);
-    console.log(this.pokemonList);
+    //console.log(this.pokemonList);
   },
 };

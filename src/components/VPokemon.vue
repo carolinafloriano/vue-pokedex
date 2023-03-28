@@ -1,19 +1,23 @@
 <template>
   <div
-    class="pokemon font-mono container mx-auto bg-emerald-400 pt-3 pb-2 pl-3 pr-2 rounded-lg flex flex-col justify-start items-start gap-1 bg-right-bottom bg-no-repeat"
+    class="pokemon font-mono bg-emerald-400 pt-3 pb-2 pl-3 pr-2 rounded-lg flex flex-col gap-1 bg-right-bottom bg-no-repeat text-white"
   >
-    <div class="font-extrabold text-base">{{ pokemon.name }}</div>
+    <div class="font-extrabold text-sm capitalize">{{ pokemon.name }}</div>
     <div class="flex flex-row justify-between gap-1">
-      <div class="flex flex-col gap-1">
-        <div class="text-xs bg-emerald-300 rounded-xl py-0.5 px-2">
-          {{ pokemon.type }}
-        </div>
-        <div class="text-xs bg-emerald-300 rounded-xl py-0.5 px-2">
-          {{ pokemon.power }}
-        </div>
+      <div class="z-10 flex flex-col gap-1">
+        <span
+          v-for="(type, index) in pokemon.types"
+          :key="'pokemon' + index"
+          class="text-xs bg-emerald-300 rounded-xl py-0.5 px-2 capitalize"
+        >
+          {{ type.type.name }}
+        </span>
       </div>
-      <div>
-        <img class="rotate" :src="pokemon.image" />
+      <div class="relative h-[80px]">
+        <img
+          :src="pokemon.sprite"
+          class="absolute right-0 bottom-0 max-h-[80px] max-w-[80px]"
+        />
       </div>
     </div>
   </div>

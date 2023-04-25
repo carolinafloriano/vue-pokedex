@@ -11,9 +11,14 @@ export default class Pokedex {
     return new Promise(async (resolve, reject) => {
       const query = JSON.stringify({
         query: `query NewQuery {
-          list: pokemon_v2_pokemon(limit: 20, offset: ${offset}) {
-            name
+          pokemons: pokemon_v2_pokemon(offset: ${offset}, limit: 50) {
             id
+            name
+            information: pokemon_v2_pokemonspecy {
+              color: pokemon_v2_pokemoncolor {
+                name
+              }
+            }
             types: pokemon_v2_pokemontypes {
               type: pokemon_v2_type {
                 name
@@ -30,16 +35,19 @@ export default class Pokedex {
             throw new Error(response.data.errors[0].message);
           }
 
-          const result = response.data.data.list;
+          const result = response.data.data.pokemons;
 
           result.map((pokemon) => {
             pokemon.sprite = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemon.id}.svg`;
           });
 
+          console.log(result);
+
           return result;
         })
         .catch((error) => {
           console.error(error);
+          reject();
         });
 
       resolve(pokemonList);

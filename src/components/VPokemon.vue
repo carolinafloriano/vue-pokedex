@@ -1,6 +1,16 @@
+<script setup>
+defineProps({
+  pokemon: {
+    type: Object,
+    required: true,
+  },
+});
+</script>
+
 <template>
   <div
-    class="pokemon font-mono bg-emerald-400 pt-3 pb-2 pl-3 pr-2 rounded-lg flex flex-col gap-1 bg-right-bottom bg-no-repeat text-white"
+    class="pokemon font-mono pt-3 pb-2 pl-3 pr-2 rounded-lg flex flex-col gap-1 bg-right-bottom bg-no-repeat text-white max-w-[180px]"
+    :class="`poke-color-${pokemon.types[0].type.name}`"
   >
     <div class="font-extrabold text-sm capitalize">{{ pokemon.name }}</div>
     <div class="flex flex-row justify-between gap-1">
@@ -8,7 +18,7 @@
         <span
           v-for="(type, index) in pokemon.types"
           :key="'pokemon' + index"
-          class="text-xs bg-emerald-300 rounded-xl py-0.5 px-2 capitalize"
+          class="text-xs text-white bg-white/20 rounded-xl py-0.5 px-2 capitalize"
         >
           {{ type.type.name }}
         </span>
@@ -22,19 +32,6 @@
     </div>
   </div>
 </template>
-
-<script>
-export default {
-  name: "VPokemon",
-
-  props: {
-    pokemon: {
-      type: Object,
-      required: true,
-    },
-  },
-};
-</script>
 
 <style>
 .pokemon {

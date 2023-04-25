@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+$pokemon-colors: (
+  'normal': #a7a877,
+  'fighting': #c03128,
+  'flying': #a890f0,
+  'poison': #9f419f,
+  'ground': #e1c068,
+  'rock': #b8a038,
+  'bug': #aab744,
+  'ghost': #6d5a94,
+  'steel': #b9b8ce,
+  'fire': #fb6c6c,
+  'water': #77bdfe,
+  'grass': #48d0b0,
+  'electric': #ffce4b,
+  'psychic': #dc6488,
+  'ice': #99d7d8,
+  'dragon': #6e40ee,
+  'dark': #6a594a,
+  'fairy': #edb2c8,
+  'unknown': #000000,
+  'shadow': #000000,
+);
+
+
+@each $color, $value in $pokemon-colors {
+  .poke-color-#{'' + $color} {
+    background-color: $value;
+  }
+}

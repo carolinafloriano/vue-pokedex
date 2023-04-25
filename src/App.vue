@@ -11,7 +11,7 @@ const store = useStore();
   </router-view>
 </template>
 
-<style>
+<style lang="scss">
 #app {
   padding: 0;
   height: 100vh;
